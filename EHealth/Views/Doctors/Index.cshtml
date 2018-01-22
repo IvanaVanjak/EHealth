@@ -1,0 +1,79 @@
+﻿@model EHealth.ViewModels.DoctorsPageViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm("Index", "Doctors", FormMethod.Post))
+        {
+            <br />
+            <fieldset>
+                @*@Html.DropDownList("DoctorSpecializationDropDown", Model.DoctorSpecializationDropDown, new { multiple = "multiple" })*@
+                @for (int i = 0; i < Model.UsersDoctors.Count; i++)
+                {
+
+
+                    <div class="form-group ">
+                        @foreach (var competence in Model.UsersDoctors[i].DoctorsSpecialisation)
+                        {
+                            <div class="bg-info">
+                                @Html.CheckBoxFor(x => Model.UsersDoctors[i].idDoctorChecked)
+                                @Html.HiddenFor(x => Model.UsersDoctors[i].personId)
+                                <b>
+                                    @Html.DisplayFor(x => Model.UsersDoctors[i].firstName)
+                                    @Html.DisplayFor(x => Model.UsersDoctors[i].lastName)
+                                </b>
+
+
+                            </div>
+                            <small>@Html.DisplayFor(modelItem => competence.doctorSpecialisation1)</small>
+                        }
+
+                        <a href="#" class="btn btn-default btn-xs pull-right" data-toggle="collapse" data-target="#@("dr"+i)">
+                            <span class="glyphicon glyphicon-info-sign"></span>
+                        </a>
+                    </div>
+                                <!-- Everything you want hidden at 940px or less, place within here -->
+                    <div id="@("dr"+i)" class="nav-collapse collapse ">
+                        <div class="row">
+                            <div class="col-md-4"><img src="~/Content/Pictures/default-user-image.jpg" alt="Default Image" width="70" /></div>
+                            @foreach (var email in Model.UsersDoctors[i].Email)
+                            {
+                                <a class="glyphicon-envelope col-md-8 " href="mailto:#">@Html.DisplayFor(modelItem => email.emailAddress)</a>
+
+                                <br />
+                            }
+                            @foreach (var phone in Model.UsersDoctors[i].PhoneNumber)
+                            {
+                                <div class="glyphicon-phone col-md-8  ">
+
+                                    @(phone.PhoneType.phoneType1 + ": " + phone.phoneNumber1)
+                                    <br />
+
+
+                                </div>
+
+                            }
+                        </div>
+                    </div><!-- /.nav-collapse -->
+
+                    <br />
+
+                }
+                <input class="btn btn-default" type="submit" value="Submit" />
+            </fieldset>
+        }
+    </div>
+    <div class="col-lg-8">
+        <div id="show-appointments">
+            @Html.Partial("Partials/_ShowAppointments", Model.Appointments)
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var anchor = document.getElementById('show-appointments');
+        anchor.scrollIntoView(true);
+    });
+</script>

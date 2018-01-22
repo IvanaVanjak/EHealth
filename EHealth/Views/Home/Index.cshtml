@@ -1,0 +1,113 @@
+﻿@model EHealth.Models.Person
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+@if (!(Request.IsAuthenticated && ViewData.ContainsKey("FullName")))
+{
+    <div class="row">
+        <br />
+        <div class="col-sm-offset-1">
+            <h4 class="pull-left">Log in first. &nbsp </h4>
+            <a class="btn btn-sm" href='@Url.Action("LogIn", "User")'>
+                <span class="glyphicon glyphicon-log-in"></span>&nbsp Log in
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <br />
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-sm-6">
+            <fieldset>
+                <h2 class="bg-info">Personal info</h2>
+              
+                <div class="form-group">
+                    <b >First name:</b>
+
+                    <span>@Model.firstName</span>
+                </div>
+                <div class="form-group">
+                    <b >Last name:</b>
+
+                    <span>@Model.lastName</span>
+
+                </div>
+                <div class="form-group">
+                    <b >Gender:</b>
+                    <span>@Model.gender</span>
+                  
+                </div>
+                <div class="form-group">
+                    <b >OIB:</b>
+                    <span>@Model.OIB</span>
+                  
+                </div>
+                <div class="form-group">
+                    <b >Place of birth:</b>
+                    <div class="col-sm-offset-1">
+                        <span>@Model.City1.cityPart</span>
+                    </div>
+                    
+                </div>
+                <div class="form-group">
+                    <b >Address:</b>
+                    @if (Model.placeOfLivingId != null)
+                    {
+                        <div class="col-sm-offset-1">
+                            @Model.streetName<span>&nbsp;</span>@Model.streetNumber
+                        </div>
+                        <div class="col-sm-offset-1">
+                            @Model.City.postalCode<span>&nbsp;</span>@Model.City.cityPart
+                        </div>
+                    }
+                    else
+                    {
+                        <span>No address</span>
+                    }
+                   
+                </div>
+                <div class="form-group">
+                    @if (Model.PhoneNumber.Count != 0)
+                    {
+
+                        <b >Phone numbers:</b>
+
+                        foreach (EHealth.Models.PhoneNumber p in Model.PhoneNumber)
+                        {
+                            <div class="col-sm-offset-1">
+                                <span>@(p.PhoneType.phoneType1 + ": " + p.phoneNumber1)</span>
+                            </div>
+                        }
+                    }
+                   
+                </div>
+                <div class="form-group">
+                    @if (Model.Email.Count != 0)
+                    {
+
+                        <b >Email addresses:</b>
+
+                        foreach (EHealth.Models.Email p in Model.Email)
+                        {
+                            <div class="col-sm-offset-1">
+                                <span>@(p.emailAddress)</span>
+                            </div>
+                        }
+                    }
+                   
+                </div>
+
+            </fieldset>
+        </div>
+        <div class="col-sm-6">
+            <h2 class="bg-info">Image</h2>
+            <img class="col-sm-4 img-responsive" src="~/Content/Pictures/default-user-image.jpg" alt="Default Image" />
+        </div>
+    </div>
+}

@@ -1,0 +1,53 @@
+﻿@model List<EHealth.ViewModels.DiagnosisViewModel>
+
+<table class="table table-condensed table-hover table-responsive">
+    <thead>
+        <tr class="">
+            <th>#</th>
+            <th>ICD</th>
+            <th>Disease name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <tr data-toggle="collapse" data-target="@("#tr"+i)" class="accordion-toggle">
+                <td>@(i + 1)</td>
+                <td>@Model[i].disesase.ICDCode</td>
+                <td>
+                    @Model[i].disesase.ICDTytle
+
+                <div class="hiddenRow">
+                    <div class="accordian-body collapse" id="@("tr"+i)">
+                        <p>
+                            @foreach (EHealth.Models.Diagnosis d in Model[i].diagnosisList)
+                            {
+                                <div>
+                                    <b class="bg-info">
+                                        @(d.DoctorsAppointment.appointmentDate.ToShortDateString() + " - "
+                                    + d.DoctorsAppointment.MedicalRecord.DoctorSpecialisation.doctorSpecialisation1 + " "
+                                    + d.DoctorsAppointment.MedicalRecord.Person.firstName + " "
+                                    + d.DoctorsAppointment.MedicalRecord.Person.lastName)
+                                    </b>
+
+                                    @if (d.treatment != null || d.Presciption.Count != 0)
+                                    {
+                                        <div class="col-md-offset-1"><b>Treatment:</b></div>
+                                        <div class="col-md-offset-1">@d.treatment</div>
+                                        <ul>
+                                            @foreach (EHealth.Models.Presciption p in d.Presciption)
+                                            {
+                                                <li class="col-md-offset-1">@(p.Medicine.medicineName + " " + p.Medicine.medicineFactory + " - " + p.Medicine.package)</li>
+                                            }
+                                        </ul>
+                                    }
+                                    <hr />
+                                </div>
+                            }
+                        </p>
+                    </div>
+                </div>
+        </tr>
+        }
+    </tbody>
+</table>

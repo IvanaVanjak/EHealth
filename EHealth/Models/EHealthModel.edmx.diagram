@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7da43595020d48ce81427fea8cb0a424" Name="Diagram1">
+        <EntityTypeShape EntityType="EHealthDB2Model.City" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EHealthDB2Model.Diagnosis" Width="1.5" PointX="12.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EHealthDB2Model.Disease" Width="1.5" PointX="6" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EHealthDB2Model.DoctorsAppointment" Width="1.5" PointX="10.5" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EHealthDB2Model.DoctorsCompetence" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EHealthDB2Model.DoctorSpecialisation" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="EHealthDB2Model.Email" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EHealthDB2Model.HealthInsurance" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EHealthDB2Model.Image" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="EHealthDB2Model.MedicalRecord" Width="1.5" PointX="8.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EHealthDB2Model.Medicine" Width="1.5" PointX="12.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EHealthDB2Model.PatientChronicalDisease" Width="1.5" PointX="8.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EHealthDB2Model.Person" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EHealthDB2Model.PhoneNumber" Width="1.5" PointX="8.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EHealthDB2Model.PhoneType" Width="1.5" PointX="6" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="EHealthDB2Model.Presciption" Width="1.5" PointX="15" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EHealthDB2Model.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="EHealthDB2Model.FK_Person_CityBirth" ManuallyRouted="false" />
+        <AssociationConnector Association="EHealthDB2Model.FK_Person_CityLiving" ManuallyRouted="false" />
+        <AssociationConnector Association="EHealthDB2Model.FK_Diagnosis_Disease" ManuallyRouted="false" />
+        <AssociationConnector Association="EHealthDB2Model.FK_Diagnosis_DoctorsAppointment" ManuallyRouted="false" />
+        <AssociationConnector Association="EHealthDB2Model.FK_Presciption_Diagnosis" ManuallyRouted="false" />
+        <AssociationConnector Association="EHealthDB2Model.FK_PatientChronicalDisease_Disease" ManuallyRouted="false" />
+        <AssociationConnector Association="EHealthDB2Model.FK_DoctorsAppoinment_specificMedicalRecord" ManuallyRouted="false" />
+        <AssociationConnector Association="EHealthDB2Model.FK_DoctorsCompetence_DoctorType" ManuallyRouted="false" />
+        <AssociationConnector Association="EHealthDB2Model.FK_DoctorsCompetence_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="EHealthDB2Model.FK_SpecificMedicalRecord_DoctorSpecialisation" ManuallyRouted="false" />
+        <AssociationConnector Association="EHealthDB2Model.FK_Email_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="EHealthDB2Model.FK_HealthInsurance_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="EHealthDB2Model.FK_Person_Image" ManuallyRouted="false" />
+        <AssociationConnector Association="EHealthDB2Model.FK_SpecificMedicalRecord_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="EHealthDB2Model.FK_SpecificMedicalRecord_Person1" ManuallyRouted="false" />
+        <AssociationConnector Association="EHealthDB2Model.FK_Presciption_Medicine" ManuallyRouted="false" />
+        <AssociationConnector Association="EHealthDB2Model.FK_PatientChronicalDisease_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="EHealthDB2Model.FK_Person_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="EHealthDB2Model.FK_PhoneNumber_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="EHealthDB2Model.FK_PhoneNumber_PhoneType" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

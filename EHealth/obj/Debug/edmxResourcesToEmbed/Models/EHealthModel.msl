@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EHealthDB2ModelStoreContainer" CdmEntityContainer="EHealthDB2Entities">
+    <EntitySetMapping Name="City">
+      <EntityTypeMapping TypeName="EHealthDB2Model.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="cityId" ColumnName="cityId" />
+          <ScalarProperty Name="postalOffice" ColumnName="postalOffice" />
+          <ScalarProperty Name="postalCode" ColumnName="postalCode" />
+          <ScalarProperty Name="cityPart" ColumnName="cityPart" />
+          <ScalarProperty Name="county" ColumnName="county" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Diagnosis">
+      <EntityTypeMapping TypeName="EHealthDB2Model.Diagnosis">
+        <MappingFragment StoreEntitySet="Diagnosis">
+          <ScalarProperty Name="diagnosisId" ColumnName="diagnosisId" />
+          <ScalarProperty Name="appointmentId" ColumnName="appointmentId" />
+          <ScalarProperty Name="diseaseId" ColumnName="diseaseId" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="treatment" ColumnName="treatment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Disease">
+      <EntityTypeMapping TypeName="EHealthDB2Model.Disease">
+        <MappingFragment StoreEntitySet="Disease">
+          <ScalarProperty Name="ICDId" ColumnName="ICDId" />
+          <ScalarProperty Name="ICDCode" ColumnName="ICDCode" />
+          <ScalarProperty Name="ICDTytle" ColumnName="ICDTytle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DoctorsAppointment">
+      <EntityTypeMapping TypeName="EHealthDB2Model.DoctorsAppointment">
+        <MappingFragment StoreEntitySet="DoctorsAppointment">
+          <ScalarProperty Name="doctorsAppointmetnId" ColumnName="doctorsAppointmetnId" />
+          <ScalarProperty Name="appointmentDate" ColumnName="appointmentDate" />
+          <ScalarProperty Name="symptopms" ColumnName="symptopms" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="specificMedicalRecordId" ColumnName="specificMedicalRecordId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DoctorsCompetence">
+      <EntityTypeMapping TypeName="EHealthDB2Model.DoctorsCompetence">
+        <MappingFragment StoreEntitySet="DoctorsCompetence">
+          <ScalarProperty Name="doctorId" ColumnName="doctorId" />
+          <ScalarProperty Name="doctorSpecialisationId" ColumnName="doctorSpecialisationId" />
+          <ScalarProperty Name="specialisationDate" ColumnName="specialisationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DoctorSpecialisation">
+      <EntityTypeMapping TypeName="EHealthDB2Model.DoctorSpecialisation">
+        <MappingFragment StoreEntitySet="DoctorSpecialisation">
+          <ScalarProperty Name="doctorSpecialisationId" ColumnName="doctorSpecialisationId" />
+          <ScalarProperty Name="doctorSpecialisation1" ColumnName="doctorSpecialisation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Email">
+      <EntityTypeMapping TypeName="EHealthDB2Model.Email">
+        <MappingFragment StoreEntitySet="Email">
+          <ScalarProperty Name="emailId" ColumnName="emailId" />
+          <ScalarProperty Name="emailAddress" ColumnName="emailAddress" />
+          <ScalarProperty Name="personId" ColumnName="personId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HealthInsurance">
+      <EntityTypeMapping TypeName="EHealthDB2Model.HealthInsurance">
+        <MappingFragment StoreEntitySet="HealthInsurance">
+          <ScalarProperty Name="healthInsuranceId" ColumnName="healthInsuranceId" />
+          <ScalarProperty Name="companyOIB" ColumnName="companyOIB" />
+          <ScalarProperty Name="companyName" ColumnName="companyName" />
+          <ScalarProperty Name="MBO" ColumnName="MBO" />
+          <ScalarProperty Name="personId" ColumnName="personId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Image">
+      <EntityTypeMapping TypeName="EHealthDB2Model.Image">
+        <MappingFragment StoreEntitySet="Image">
+          <ScalarProperty Name="imageId" ColumnName="imageId" />
+          <ScalarProperty Name="image1" ColumnName="image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MedicalRecord">
+      <EntityTypeMapping TypeName="EHealthDB2Model.MedicalRecord">
+        <MappingFragment StoreEntitySet="MedicalRecord">
+          <ScalarProperty Name="medicalRecordId" ColumnName="medicalRecordId" />
+          <ScalarProperty Name="doctorId" ColumnName="doctorId" />
+          <ScalarProperty Name="personId" ColumnName="personId" />
+          <ScalarProperty Name="doctorSpecialisationId" ColumnName="doctorSpecialisationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Medicine">
+      <EntityTypeMapping TypeName="EHealthDB2Model.Medicine">
+        <MappingFragment StoreEntitySet="Medicine">
+          <ScalarProperty Name="medicneId" ColumnName="medicneId" />
+          <ScalarProperty Name="ATKId" ColumnName="ATKId" />
+          <ScalarProperty Name="medicineName" ColumnName="medicineName" />
+          <ScalarProperty Name="medicineFactory" ColumnName="medicineFactory" />
+          <ScalarProperty Name="medicineLongName" ColumnName="medicineLongName" />
+          <ScalarProperty Name="usage" ColumnName="usage" />
+          <ScalarProperty Name="package" ColumnName="package" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PatientChronicalDisease">
+      <EntityTypeMapping TypeName="EHealthDB2Model.PatientChronicalDisease">
+        <MappingFragment StoreEntitySet="PatientChronicalDisease">
+          <ScalarProperty Name="personId" ColumnName="personId" />
+          <ScalarProperty Name="diseaseId" ColumnName="diseaseId" />
+          <ScalarProperty Name="dateOfDiagnose" ColumnName="dateOfDiagnose" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Person">
+      <EntityTypeMapping TypeName="EHealthDB2Model.Person">
+        <MappingFragment StoreEntitySet="Person">
+          <ScalarProperty Name="personId" ColumnName="personId" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="OIB" ColumnName="OIB" />
+          <ScalarProperty Name="streetName" ColumnName="streetName" />
+          <ScalarProperty Name="streetNumber" ColumnName="streetNumber" />
+          <ScalarProperty Name="placeOfLivingId" ColumnName="placeOfLivingId" />
+          <ScalarProperty Name="placeOfBirthId" ColumnName="placeOfBirthId" />
+          <ScalarProperty Name="imageId" ColumnName="imageId" />
+          <ScalarProperty Name="isDoctor" ColumnName="isDoctor" />
+          <ScalarProperty Name="primaryDoctorId" ColumnName="primaryDoctorId" />
+          <ScalarProperty Name="bloodType" ColumnName="bloodType" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="salt" ColumnName="salt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhoneNumber">
+      <EntityTypeMapping TypeName="EHealthDB2Model.PhoneNumber">
+        <MappingFragment StoreEntitySet="PhoneNumber">
+          <ScalarProperty Name="phoneId" ColumnName="phoneId" />
+          <ScalarProperty Name="phoneTypeId" ColumnName="phoneTypeId" />
+          <ScalarProperty Name="phoneNumber1" ColumnName="phoneNumber" />
+          <ScalarProperty Name="personId" ColumnName="personId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhoneType">
+      <EntityTypeMapping TypeName="EHealthDB2Model.PhoneType">
+        <MappingFragment StoreEntitySet="PhoneType">
+          <ScalarProperty Name="phoneTypeId" ColumnName="phoneTypeId" />
+          <ScalarProperty Name="phoneType1" ColumnName="phoneType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Presciption">
+      <EntityTypeMapping TypeName="EHealthDB2Model.Presciption">
+        <MappingFragment StoreEntitySet="Presciption">
+          <ScalarProperty Name="diagnosisId" ColumnName="diagnosisId" />
+          <ScalarProperty Name="medicineId" ColumnName="medicineId" />
+          <ScalarProperty Name="note" ColumnName="note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="EHealthDB2Model.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

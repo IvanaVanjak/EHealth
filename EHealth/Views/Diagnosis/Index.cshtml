@@ -1,0 +1,52 @@
+﻿@model EHealth.ViewModels.DiagnosisListViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm("Index", "Diagnosis", FormMethod.Post))
+        {
+            <br />
+            <fieldset>
+                <div class="form-group">
+                    @*@Html.LabelFor(x => x.search, new { @class = "col-md-2 control-label" })*@
+                    <div class="col-md-12">
+                        @Html.TextBoxFor(x => x.search, new { @class = "form-control", placeholder = "Enter disease name" })
+                        @Html.ValidationMessageFor(x => x.search)
+                    </div>
+
+                </div>
+                <div class="col-md-12 form-group">
+                    <div class="btn btn-default btn-sm" data-toggle="collapse" data-target="#diseaseGroups">
+                        <span class="glyphicon glyphicon-plus-sign"></span>
+                    </div>
+                </div>
+                <div id="diseaseGroups" class="collapse">
+                    <div class="col-md-12">
+                        @for (int i = 0; i < Model.diseaseGroups.Count; i++)
+                        {
+                            <div>
+                                @Html.CheckBoxFor(x => Model.diseaseGroups[i].IsCheked)
+                                @Html.HiddenFor(x => Model.diseaseGroups[i].Id)
+                                <b>
+                                    @(Model.diseaseGroups[i].Start + "-" + Model.diseaseGroups[i].End + " " + Html.DisplayFor(x => Model.diseaseGroups[i].Name))
+                                </b>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+                <div class="col-md-1 form-group">
+                    <input type="submit" value="Filter" class="btn btn-default" />
+                </div>
+            </fieldset>
+        }
+    </div>
+    <div class="col-lg-8">
+        <div id="show-diagnosis">
+            @Html.Partial("Partials/_ShowDiagnosis", Model.diagnosisVMList)
+        </div>
+    </div>
+</div>

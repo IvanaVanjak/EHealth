@@ -1,0 +1,102 @@
+﻿@model List<EHealth.ViewModels.AppointmentViewModel>
+
+<br />
+<div class="btn-group col-md-offset-3" role="group" aria-label="...">
+    @Ajax.ActionLink("Previous", "PreviousMonth", "Doctors", new { day = ViewBag.Day }, new AjaxOptions { UpdateTargetId = "show-appointments" }, new { @class = "btn btn-default" })
+    <input type="button" class="btn btn-default" id="dp" value="@ViewBag.Day.ToString("MM.yyyy.")" />
+    @Ajax.ActionLink("Next", "NextMonth", "Doctors", new { day = ViewBag.Day }, new AjaxOptions { UpdateTargetId = "show-appointments" }, new { @class = "btn btn-default" })
+</div>
+
+<div>
+    <br />
+</div>
+
+<table class="table table-condensed table-hover table-responsive" style="border-collapse:collapse;">
+    <thead>
+        <tr class="">
+            <th>#</th>
+            <th>Date</th>
+            <th>Specialisation</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <tr data-toggle="collapse" data-target="@("#tr"+i)" class="accordion-toggle">
+                <td>@(i + 1)</td>
+                <td>@Model[i].Appointment.appointmentDate.ToShortDateString()</td>
+                <td>@Model.ElementAt(i).MedicalRecord.DoctorSpecialisation.doctorSpecialisation1</td>
+                <td>@(Model.ElementAt(i).MedicalRecord.Person.firstName + " " + Model.ElementAt(i).MedicalRecord.Person.lastName)</td>
+            </tr>
+            <tr>
+                <td colspan="4" class="hiddenRow">
+                    <div class="accordian-body collapse col-md-offset-1" id="@("tr"+i)">
+                        @if (Model[i].Appointment.symptopms != null)
+                        {
+                            <b>Symptoms:</b>
+                            <p>
+                                @Model[i].Appointment.symptopms
+                            </p>
+                        }
+                        @if (Model[i].Appointment.Diagnosis != null)
+                        {
+                            <p>
+                                @foreach (EHealth.Models.Diagnosis d in Model[i].Appointment.Diagnosis)
+                                {
+                                    <div>
+                                        <b>Diagnosis:</b>
+                                        <div class="bg-info"><b>@(d.Disease.ICDCode + " " + d.Disease.ICDTytle)</b></div>
+                                        @if (d.treatment != null || d.Presciption.Count != 0)
+                                        {
+                                            <div class="col-md-offset-1"><b>Treatment:</b></div>
+                                            <div class="col-md-offset-1">@d.treatment</div>
+                                            <ul>
+                                                @foreach (EHealth.Models.Presciption p in d.Presciption)
+                                                {
+                                                    <li class="col-md-offset-1">@(p.Medicine.medicineName + " " + p.Medicine.medicineFactory + " - " + p.Medicine.package)</li>
+                                                }
+                                            </ul>
+                                        }
+                                    </div>
+
+                                }
+
+                            </p>
+                        }
+
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    $("#dp").datepicker({
+        format: "mm.yyyy.",
+        startView: "months",
+        minViewMode: "months"
+    }).on("changeDate", function (e) {
+        $('#dp').datepicker('hide');
+        var dateObject = $('#dp').val();
+        //alert(date);
+        var date = { 'date': dateObject.toString() }
+        $.ajax({
+            url: '../Doctors/GetByDate',
+            data: date,
+            type: 'GET',
+            cache: false,
+            success: function (result) {
+                $('#show-appointments').html(result);
+
+            },
+            error: function (req, status, error) {
+                alert(req + ' ' + status + ' ' + error);
+            }
+        })
+    });
+
+    //var anchor = document.getElementById('show-appointments');
+    //anchor.scrollIntoView(true);
+</script>
